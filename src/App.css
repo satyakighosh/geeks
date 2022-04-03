@@ -1,0 +1,9 @@
+.gridContainer {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 50px;
+}
+
+html, body, #root {
+  height: 100%;
+}

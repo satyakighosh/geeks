@@ -1,0 +1,29 @@
+spa --> less static, more dynamic
+
+only 1 html file called - index.html
+
+donald -- donald.tsx ---> wiki.com/donald
+joe -- joe.tsx ---> wiki.com/joe
+
+
+horizontal tabs
+
+page1 page2 page3
+tab1  tab2  tab3
+
+document.get(tab1).hide
+document.get(tab2).show
+
+
+Advantage of React over Angular:
+It is react virtual document. 
+Just like html dom
+        html   
+    head    body 
+            div1            div2 div3
+            div1.5 div 1.6
+
+In js : html -> html dom -> browser updates ui
+In react: components -> react virtual dom -> html dom -> browser updates ui
+react virtual dom (using hash data structure) tries to optimize the updates since html dom (using tree data structure) takes time to update
+https://reactkungfu.com/2015/10/the-difference-between-virtual-dom-and-dom/
