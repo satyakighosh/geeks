@@ -1,0 +1,31 @@
+name: CI/CD
+ 
+on:
+  push:
+    branches:
+      - main
+ 
+env:
+  REACT_APP_apiKey: ${{ secrets.REACT_APP_APIKEY }}
+  REACT_APP_authDomain: ${{ secrets.REACT_APP_AUTHDOMAIN }}
+  REACT_APP_databaseURL: ${{ secrets.REACT_APP_DATABASEURL }}
+  REACT_APP_projectId: ${{ secrets.REACT_APP_PROJECTID }}
+  REACT_APP_storageBucket: ${{ secrets.REACT_APP_STORAGEBUCKET }}
+  REACT_APP_messagingSenderId: ${{ secrets.REACT_APP_MESSAGINGSENDERID }}
+  REACT_APP_appId: ${{ secrets.REACT_APP_APPID }}
+ 
+jobs:
+  build:
+ 
+    runs-on: ubuntu-latest
+ 
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build
+      run: |
+        npm install
+        npm run build
+    - name: Firebase Deploy
+      run: |
+        sudo npm install -g firebase-tools
+        firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
