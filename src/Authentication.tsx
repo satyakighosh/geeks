@@ -73,7 +73,7 @@ export default function Authentication(props: IAuthenticationProps) {
                     required: true,
                     minLength: { value: 4, message: "Name should be minimum 4 length" }
                 })}
-                    error={formState.errors?.name != undefined}
+                    error={formState.errors?.name !== undefined}
                     helperText={formState.errors?.name?.message}
                 />}
 
@@ -81,14 +81,14 @@ export default function Authentication(props: IAuthenticationProps) {
                     required: true,
                     pattern: { value: /[\w.]+@\w+\.[\w.]+/, message: "Email is invalid" }
                 })}
-                    error={formState.errors?.email != undefined}
+                    error={formState.errors?.email !== undefined}
                     helperText={formState.errors?.email?.message}
                 />
                 <TextField variant="outlined" placeholder="Password" type={"password"} {...register("password", {
                     required: true,
                     minLength: { value: 6, message: "Password should be minimum 6 length" }
                 })}
-                    error={formState.errors?.password != undefined}
+                    error={formState.errors?.password !== undefined}
                     helperText={formState.errors?.password?.message}
                 />
 
