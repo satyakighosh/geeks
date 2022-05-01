@@ -100,7 +100,7 @@ export default function Authentication(props: IAuthenticationProps) {
                     {props.showLoginButton && <Fab variant="extended" onClick={() => history("/Login")}>Login</Fab>}
                 </div>
                 {showLoadingSpinner && <LoadingSpinner showBackdrop={true}/>}
-                {errorMessage && <Typography variant="h5" className={style.errorMessage}>{errorMessage}</Typography>}
+                {errorMessage && <Typography variant="h5" id="errorMessage" className={style.errorMessage}>{errorMessage}</Typography>}
             </form>
         </div>
 
