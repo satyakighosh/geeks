@@ -8,7 +8,7 @@ import LoadingSpinner from "./LoadingSpinner";
 import HotelCard from "./HotelCard";
 
 interface IFile {
-    restaurant: IHotel
+    data:{hotels:IHotel[]};
 }
 
 const useStyle = makeStyles({
@@ -24,9 +24,22 @@ export default function Home() {
     const HotelReducer = useSelector((x: AppState) => x.HotelReducer);
     useEffect(() => {
         async function api() {
-            const response = await fetch("/hotel.json");
-            const json: IFile[] = await response.json();
-            dispatch(completed(json.map(x => x.restaurant)));
+            const myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+
+            const raw = JSON.stringify({
+                "query": "{\n  hotels{\n    id\n    name\n    cuisines,\n    featured_image\n  }\n}\n"
+            });
+
+            const requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw
+            };
+            const response = await fetch("https://cryptic-sands-30678.herokuapp.com/graphql", 
+            requestOptions);
+            const json: IFile = await response.json();
+            dispatch(completed(json.data.hotels));
         }
         dispatch(started());
         api();
