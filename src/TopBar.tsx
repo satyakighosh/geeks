@@ -47,9 +47,9 @@ export default function TopBar(props: IProps) {
                     <InputBase className={style.searchBox} placeholder={"Search Hotel..."} value={props.searchString}
                         onChange={(e) => props.setSearchString(e.target.value)} />
                 </div>
-                {!isUserExist && <Button className={style.button} onClick={() => history("/Login")} >Login</Button>}
-                {!isUserExist && <Button className={style.button} onClick={() => history("/SignUp")}>Sign Up</Button>}
-                {isUserExist && <Button className={style.button} onClick={() => history("/Profile")}>Profile</Button>}
+                {!isUserExist && <Button className={style.button} id="login" onClick={() => history("/Login")} >Login</Button>}
+                {!isUserExist && <Button className={style.button} id="signup" onClick={() => history("/SignUp")}>Sign Up</Button>}
+                {isUserExist && <Button className={style.button} id="profile" onClick={() => history("/Profile")}>Profile</Button>}
             </Toolbar>
         </AppBar>
     )
