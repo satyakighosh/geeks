@@ -20,14 +20,17 @@ import Login from './Login';
 // import { Redirect } from 'react-router-dom';
 import Home from './Home'
 import './FirebaseSetup';
-import UserContext from './UserContext';
+import UserContext, { Context } from './UserContext';
 import Profile from './Profile';
+import { useContext } from 'react';
 
 export default function App() {
+  const context = useContext(Context);
+  const isUserExist = context && context.uid;
   return (
     <Provider store={ConfigureStore()}>
       <BrowserRouter>
-        <UserContext>
+        
           <Routes>
             {/* routes tutorial */}
             <Route path="/RouteA/:name" element={<RouteA />} />
@@ -58,18 +61,18 @@ export default function App() {
             <Route path="/MaterialUi" element={<MaterialUi />} />
 
             {/* project */}
-            <Route path="/SignUp" element={<SignUp />} />
-            <Route path="/Login" element={<Login />} />
+            {!isUserExist && <Route path="/SignUp" element={<SignUp />} />}
+            {!isUserExist && <Route path="/Login" element={<Login />} />}
             <Route path="/Home" element={<Home />} />
 
             {/* profile */}
-            <Route path="/Profile" element={<Profile />} />
-
+            {isUserExist && <Route path="/Profile" element={<Profile />} />}
+            
             <Route path="*" element={<Home />} />
 
 
           </Routes>
-        </UserContext>
+      
       </BrowserRouter>
     </Provider>
   );
