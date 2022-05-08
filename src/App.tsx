@@ -20,7 +20,7 @@ import Login from './Login';
 // import { Redirect } from 'react-router-dom';
 import Home from './Home'
 import './FirebaseSetup';
-import UserContext, { Context } from './UserContext';
+import { Context } from './UserContext';
 import Profile from './Profile';
 import { useContext } from 'react';
 
