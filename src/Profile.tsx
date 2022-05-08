@@ -38,12 +38,12 @@ export default function Profile() {
         <div className={style.parentContainer}>
             <div className={style.container}>
                 <Typography variant="h3">Welcome to the profile page</Typography>
-                <Typography variant="h5">{context?.displayName}</Typography>
-                <Typography variant="h5">{context?.email}</Typography>
-                <Typography variant="h5">{context?.uid}</Typography>
+                <Typography variant="h5" id="name">{context?.displayName}</Typography>
+                <Typography variant="h5" id="email">{context?.email}</Typography>
+                <Typography variant="h5" id="uid">{context?.uid}</Typography>
                 <div className={style.buttons}>
-                    <Fab color="primary" variant="extended" onClick={onSignOut}>Signout</Fab>
-                    <Fab color="secondary" variant="extended" onClick={() => history("/Home")}>Home</Fab>
+                    <Fab color="primary" variant="extended" id="signout" onClick={onSignOut}>Signout</Fab>
+                    <Fab color="secondary" variant="extended" id="home" onClick={() => history("/Home")}>Home</Fab>
                 </div>
             </div>
         </div>
