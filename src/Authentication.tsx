@@ -69,7 +69,7 @@ export default function Authentication(props: IAuthenticationProps) {
         <div className={style.parentContainer}>
             <form onSubmit={handleSubmit(onSubmitClick)} className={style.container}>
                 <Typography variant="h3" className={style.title}>{props.title}</Typography>
-                {props.showName && <TextField variant="outlined" placeholder="Name" {...register("name", {
+                {props.showName && <TextField variant="outlined" placeholder="Name" id="name" {...register("name", {
                     required: true,
                     minLength: { value: 4, message: "Name should be minimum 4 length" }
                 })}
@@ -77,14 +77,14 @@ export default function Authentication(props: IAuthenticationProps) {
                     helperText={formState.errors?.name?.message}
                 />}
 
-                <TextField variant="outlined" placeholder="Email" type={"email"} {...register("email", {
+                <TextField variant="outlined" placeholder="Email" type={"email"} id="email" {...register("email", {
                     required: true,
                     pattern: { value: /[\w.]+@\w+\.[\w.]+/, message: "Email is invalid" }
                 })}
                     error={formState.errors?.email !== undefined}
                     helperText={formState.errors?.email?.message}
                 />
-                <TextField variant="outlined" placeholder="Password" type={"password"} {...register("password", {
+                <TextField variant="outlined" placeholder="Password" type={"password"} id="password" {...register("password", {
                     required: true,
                     minLength: { value: 6, message: "Password should be minimum 6 length" }
                 })}
@@ -93,11 +93,11 @@ export default function Authentication(props: IAuthenticationProps) {
                 />
 
                 <div className={style.buttons}>
-                    <Fab color="primary" variant="extended" type="submit">Submit</Fab>
-                    <Fab color="secondary" variant="extended" onClick={() => reset()}>Reset</Fab>
+                    <Fab color="primary" variant="extended" type="submit" id="submit">Submit</Fab>
+                    <Fab color="secondary" variant="extended" id="reset" onClick={() => reset()}>Reset</Fab>
                     <Fab variant="extended" onClick={() => history("/Home")}>Home</Fab>
-                    {props.showSignUpButton && <Fab variant="extended" onClick={() => history("/SignUp")}>Sign up</Fab>}
-                    {props.showLoginButton && <Fab variant="extended" onClick={() => history("/Login")}>Login</Fab>}
+                    {props.showSignUpButton && <Fab variant="extended" id="signup" onClick={() => history("/SignUp")}>Sign up</Fab>}
+                    {props.showLoginButton && <Fab variant="extended" id="login" onClick={() => history("/Login")}>Login</Fab>}
                 </div>
                 {showLoadingSpinner && <LoadingSpinner showBackdrop={true}/>}
                 {errorMessage && <Typography variant="h5" id="errorMessage" className={style.errorMessage}>{errorMessage}</Typography>}
